@@ -4,7 +4,7 @@ variable "private_vlan_dal12" {}
 variable "public_vlan_dal12" {}
 
 data ibm_resource_group "resource_group" {
-     name = default
+     name = "default"
    }
    
 ##resource ibm_container_cluster "schematics" {
