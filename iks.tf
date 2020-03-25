@@ -7,8 +7,8 @@ data "ibm_resource_group" "resource_group" {
      name = default
    }
    
-resource "ibm_container_cluster" "mycluster" {
-     name            = "mycluster"
+resource "ibm_container_cluster" "schematics" {
+     name            = "schematics"
      datacenter      = "dal10"
      machine_type    = "b3c.4x16"
      hardware        = "shared"
@@ -27,7 +27,7 @@ resource "ibm_container_cluster" "mycluster" {
    
 resource "ibm_container_worker_pool_zone_attachment" "dal12" {
      cluster         = "mycluster"
-     worker_pool     = "${data.ibm_container_cluster.mycluster.worker_pools.id[0]}"
+     worker_pool     = "${data.ibm_container_cluster.schematics.worker_pools.id[0]}"
      zone            = "dal12"
      private_vlan_id = "${var.private_vlan_dal12}"
      public_vlan_id  = "${var.public_vlan_dal12}"
