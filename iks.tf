@@ -29,3 +29,11 @@ output "worker_pools" {
   value = "${ibm_container_cluster.schematics.worker_pools.0.id}"
 }
 
+resource ibm_container_worker_pool_zone_attachment "dal12" {
+    cluster         = "mycluster"
+    worker_pool     = "${ibm_container_cluster.schematics.worker_pools.0.id}"
+    zone            = "dal12"
+    private_vlan_id = "${var.private_vlan_dal12}"
+    public_vlan_id  = "${var.public_vlan_dal12}"
+}
+
