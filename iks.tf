@@ -3,11 +3,11 @@ variable "public_vlan_dal10" {}
 variable "private_vlan_dal12" {}
 variable "public_vlan_dal12" {}
 
-data "ibm_resource_group" "resource_group" {
+data ibm_resource_group "resource_group" {
      name = default
    }
    
-resource "ibm_container_cluster" "schematics" {
+resource ibm_container_cluster "schematics" {
      name            = "schematics"
      datacenter      = "dal10"
      machine_type    = "b3c.4x16"
@@ -25,7 +25,7 @@ resource "ibm_container_cluster" "schematics" {
      resource_group_id = "${data.ibm_resource_group.resource_group.id}"
 }
    
-resource "ibm_container_worker_pool_zone_attachment" "dal12" {
+resource ibm_container_worker_pool_zone_attachment "dal12" {
      cluster         = "mycluster"
      worker_pool     = "${data.ibm_container_cluster.schematics.worker_pools.id[0]}"
      zone            = "dal12"
