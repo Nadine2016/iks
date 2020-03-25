@@ -27,7 +27,7 @@ resource ibm_container_cluster "schematics" {
    
 resource ibm_container_worker_pool_zone_attachment "dal12" {
      cluster         = "mycluster"
-     worker_pool     = "${data.ibm_container_cluster.schematics.worker_pools.id[0]}"
+     worker_pool     = "${ibm_container_cluster.schematics.worker_pools.id[0]}"
      zone            = "dal12"
      private_vlan_id = "${var.private_vlan_dal12}"
      public_vlan_id  = "${var.public_vlan_dal12}"
