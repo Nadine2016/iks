@@ -26,6 +26,6 @@ resource ibm_container_cluster "schematics" {
 }
 
 output "worker_pools" {
-  value = "${ibm_container_cluster.schematics.worker_pools[0].id}"
+  value = "${ibm_container_cluster.schematics.worker_pools.0.id}"
 }
 
