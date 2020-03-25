@@ -30,7 +30,7 @@ output "worker_pools" {
 }
 
 resource ibm_container_worker_pool_zone_attachment "dal12" {
-    cluster         = "schematics"
+    cluster         = "${ibm_container_cluster.schematics.id}"
     worker_pool     = "${ibm_container_cluster.schematics.worker_pools.0.id}"
     zone            = "dal12"
     private_vlan_id = "${var.private_vlan_dal12}"
